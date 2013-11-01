@@ -1,0 +1,48 @@
+#!/bin/bash
+
+XCODE_PATH="/Applications/Xcode.app/Contents"
+#XCODE_PATH="~/Downloads/Xcode5-DP6.app/Contents"
+
+DEVELOP_BIN=${XCODE_PATH}"/Developer/usr/bin"
+#DEVELOP_BIN=${XCODE_PATH}"/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin"
+
+SDK_VERSION="6.1"
+#SDK_VERSION="7.0"
+
+PLATFORM_TYPE="iPhoneOS"
+#PLATFORM_TYPE="iPhoneSimulator"
+#PLATFORM_TYPE="MacOSX"
+
+ARCH_TYPE="armv7"
+
+PLATFORM_PATH=${XCODE_PATH}"/Developer/Platforms/"${PLATFORM_TYPE}".platform/Developer" 
+PLATFORM_USR_BIN=${PLATFORM_PATH}"/usr/bin" 
+SDK_SYS_ROOT=${PLATFORM_PATH}"/SDKs/"${PLATFORM_TYPE}${SDK_VERSION}".sdk"
+
+#setenv LANG en_US.US-ASCII
+PATH=${PATH}:${PLATFORM_USR_BIN}:${DEVELOP_BIN}:"/usr/bin:/bin:/usr/sbin:/sbin"
+
+
+DEBUG_FUNCTION=" --disable-debug"
+
+CROSS_FUNCTION=" --enable-cross-compile --cpu=cortex-a8 --enable-neon --enable-pic"
+ARCH_FUNCTION=" --arch=arm --target-os=darwin"
+
+ENABLE_FUNCTIONS=" --enable-optimizations"
+DISABLE_COMPONENT=" --disable-doc --disable-avdevice --disable-avfilter --disable-avresample"
+DISABLE_FUNCTIONS=${DISABLE_COMPONENT}" --disable-bzlib --disable-zlib --disable-encoders --disable-programs --disable-pthreads --disable-network --disable-dxva2 --disable-vaapi --disable-vdpau" 
+
+CC_COMPILER=${PLATFORM_USR_BIN}"/gcc"
+GAS_COMPILER="gas-preprocessor.pl "
+AS_COMPILER="${GAS_COMPILER}${CC_COMPILER}"
+
+EXTRA_CFLAGS="-arch "${ARCH_TYPE}
+EXTRA_LDFLAGS="-arch "${ARCH_TYPE}" -isysroot "${SDK_SYS_ROOT}
+
+make clean
+
+./configure ${DEBUG_FUNCTION} ${ARCH_FUNCTION} ${CROSS_FUNCTION} ${ENABLE_FUNCTIONS} ${DISABLE_FUNCTIONS} --cc=${CC_COMPILER} --as="'${AS_COMPILER}'" --sysroot=${SDK_SYS_ROOT} --extra-cflags="${EXTRA_CFLAGS}" --extra-ldflags="${EXTRA_LDFLAGS}"
+
+cp config.h config.h.${PLATFORM_TYPE}.${ARCH_TYPE}
+cp config.h.setup config.h
+
