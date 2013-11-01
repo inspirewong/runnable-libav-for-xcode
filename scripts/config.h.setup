@@ -1,0 +1,31 @@
+
+#include <TargetConditionals.h>
+
+//#NOTE: the config.h of armv7 and armv7s is same.
+
+//#if TARGET_IPHONE_SIMULATOR
+//#	include "config.h.i386"
+//#elif TARGET_OS_IPHONE
+//#	include "config.h.arm7"
+//#else
+//#	error "NO TARGET_IPHONE_SIMULATOR or TARGET_OS_IPHONE !!!"
+//#endif
+
+#if TARGET_CPU_X86
+#	include "config.h.iPhoneSimulator.i386"
+#elif TARGET_CPU_ARM
+#	include "config.h.iPhoneOS.armv7"
+//#	include "config.h.iPhoneOS.armv7s"
+
+
+#else
+#	error "NO TARGET_CPU_X86 or TARGET_CPU_ARM !!!"
+#	error "TARGET_CPU_X86_64"
+#endif
+
+//#undef CONFIG_DCA_DECODER
+#undef CONFIG_DXA_DECODER
+
+//#define CONFIG_DCA_DECODER 0
+#define CONFIG_DXA_DECODER 0
+
