@@ -4,9 +4,10 @@ source ./build_i386
 source ./build_armv7
 #source ./build_armv7s
 
-if [! -d universal ]; then
-	mkdir universal
+if [ ! -d universal ]; then
+     mkdir universal
 fi
+
 
 rm universal/*.a
 
