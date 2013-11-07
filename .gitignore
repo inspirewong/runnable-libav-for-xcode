@@ -17,4 +17,5 @@
 *.app
 
 libav*
-runnable-libav*
+xcuserdata
+project.xcworkspace
