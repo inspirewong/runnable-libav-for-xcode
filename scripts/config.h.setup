@@ -1,4 +1,7 @@
 
+#ifndef _GLOBAL_CONFIG_H_
+#define _GLOBAL_CONFIG_H_
+
 #include <TargetConditionals.h>
 
 //#NOTE: the config.h of armv7 and armv7s is same.
@@ -19,8 +22,9 @@
 
 
 #else
-#	error "NO TARGET_CPU_X86 or TARGET_CPU_ARM !!!"
-#	error "TARGET_CPU_X86_64"
+#	include "config.h.iPhoneOS.armv7"
+//#	error "NO TARGET_CPU_X86 or TARGET_CPU_ARM !!!"
+//#	error "TARGET_CPU_X86_64"
 #endif
 
 //#undef CONFIG_DCA_DECODER
@@ -28,4 +32,6 @@
 
 //#define CONFIG_DCA_DECODER 0
 #define CONFIG_DXA_DECODER 0
+
+#endif
 

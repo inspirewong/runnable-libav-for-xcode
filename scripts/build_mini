@@ -1,0 +1,11 @@
+#!/bin/tcsh -f
+
+source ./build_i386_mini
+source ./build_armv7_mini
+
+if (! -d mini_universal) mkdir mini_universal
+
+rm mini_universal/*.a
+
+lipo -create -arch armv7 mini_armv7/libavcodec.a -arch i386 mini_i386/libavcodec.a -output mini_universal/mini_avcodec.a
+

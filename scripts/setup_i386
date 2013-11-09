@@ -31,9 +31,9 @@ CROSS_FUNCTION=" --disable-asm"
 #ARCH_FUNCTION=" --arch=arm --target-os=darwin"
 ARCH_FUNCTION=
 
-ENABLE_FUNCTIONS=" --enable-optimizations"
+ENABLE_FUNCTIONS=" --enable-optimizations --enable-network"
 DISABLE_COMPONENT=" --disable-doc --disable-avdevice --disable-avfilter --disable-avresample"
-DISABLE_FUNCTIONS=${DISABLE_COMPONENT}" --disable-bzlib --disable-zlib --disable-encoders --disable-programs --disable-pthreads --disable-network --disable-dxva2 --disable-vaapi --disable-vdpau" 
+DISABLE_FUNCTIONS=${DISABLE_COMPONENT}" --disable-bzlib --disable-zlib --disable-encoders --disable-programs --disable-pthreads --disable-dxva2 --disable-vaapi --disable-vdpau" 
 
 #CC_COMPILER=${PLATFORM_USR_BIN}"/gcc"
 CC_COMPILER=${PLATFORM_USR_BIN}"/i686-apple-darwin11-llvm-gcc-4.2"

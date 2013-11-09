@@ -28,9 +28,9 @@ DEBUG_FUNCTION=" --disable-debug"
 CROSS_FUNCTION=" --enable-cross-compile --cpu=cortex-a8 --enable-neon --enable-pic"
 ARCH_FUNCTION=" --arch=arm --target-os=darwin"
 
-ENABLE_FUNCTIONS=" --enable-optimizations"
+ENABLE_FUNCTIONS=" --enable-optimizations --enable-network"
 DISABLE_COMPONENT=" --disable-doc --disable-avdevice --disable-avfilter --disable-avresample"
-DISABLE_FUNCTIONS=${DISABLE_COMPONENT}" --disable-bzlib --disable-zlib --disable-encoders --disable-programs --disable-pthreads --disable-network --disable-dxva2 --disable-vaapi --disable-vdpau" 
+DISABLE_FUNCTIONS=${DISABLE_COMPONENT}" --disable-bzlib --disable-zlib --disable-encoders --disable-programs --disable-pthreads --disable-dxva2 --disable-vaapi --disable-vdpau" 
 
 CC_COMPILER=${PLATFORM_USR_BIN}"/gcc"
 GAS_COMPILER="gas-preprocessor.pl "
